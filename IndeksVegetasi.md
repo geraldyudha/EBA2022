@@ -49,7 +49,7 @@ Pada script ini, kita membuat dua variabel, yaitu variabel `nir` dan `red` yang 
 Map.addLayer(ndvi, {min: -1, max: 1, palette:['blue', 'white', 'green']}, 'Citra NDVI');
 ```
 Dari hasil ini, terlihat bahwa daerah yang lebih hijau memiliki indeks vegetasi yang lebih tinggi
-![ndvi1](https://github.com/geraldyudha/EBA2022/blob/master/ContohNDVI1.png)
+(https://github.com/geraldyudha/EBA2022/blob/master/ContohNDVI1.png)
 
 ### 2. Perhitungan langsung
 Selain menggunakan cara manual seperti diatas, karena NDVI sangat sering dipakai dalam _remote sensing_, GEE memiliki cara singkat untuk melakukan kalkulasi ini, yaitu dengan menggunakan fungsi `ee.image` seperti dibawah ini
