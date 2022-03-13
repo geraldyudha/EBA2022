@@ -9,7 +9,7 @@ Rumus NDVI:
 NDVI = (NIR - RED)/(NIR + RED)
 ```
 
-**Tahap pertama** adalah memunculkan _image_ yang ingin dianalisis. Metode dan _script_ yang digunakan sama dengan pertemuan-pertemuan sebelumnya. Filter yang digunakan juga masih sama, dengan filter awan, tanggal antar Januari 2021 sampai Desember 2021, dan ROI menggunakan shapefile batas wilayah CA dan TWA Papandayan. Silahkan jika ingin merubah tanggal untuk melihat perubahan indeks vegetasi.
+**Tahap pertama** adalah memunculkan _image_ yang ingin dianalisis. Metode dan _script_ yang digunakan sama dengan pertemuan-pertemuan sebelumnya. Filter yang digunakan juga masih sama, dengan filter awan, tanggal antar Januari 2021 sampai Desember 2021, dan area of interest menggunakan shapefile batas wilayah CA dan TWA Papandayan. Silahkan jika ingin merubah tanggal untuk melihat perubahan indeks vegetasi.
 
 ```javascript
 // Function to mask clouds using the quality band of Landsat 8.
@@ -22,23 +22,23 @@ var maskL8 = function(image) {
 }
 
 // Map the function over one year of Landsat 8 TOA data and take the median.
-var composite = L8
+var citra2021 = L8
     .filterDate('2021-01-01', '2021-12-31')
     .map(maskL8)
     .median();
 
-var roicomposite = composite.clip(roi);
+var citra2021 = citra2021.clip(aoi);
 
 // Display the results in a cloudy place.
-Map.centerObject(roi,12);
-Map.addLayer(roicomposite);
+Map.centerObject(aoi,12);
+Map.addLayer(citra2021);
 ```
 
 **Tahap kedua** adalah melakukan kalkulasi sesuai dengan rumus NDVI
 ```javascript
 // Compute the Normalized Difference Vegetation Index (NDVI).
-var nir = roicomposite.select('B5');
-var red = roicomposite.select('B4');
+var nir = citra2021.select('B5');
+var red = citra2021.select('B4');
 var ndvi = nir.subtract(red).divide(nir.add(red)).rename('NDVI');
 ```
 Pada script ini, kita membuat dua variabel, yaitu variabel `nir` dan `red` yang masing-masing menggambarkan _image_ yang hanya terdiri dari band tersebut saja. Kemudian kita melakukan operasi matematika pada kedua variabel ini dengan mengurangi, lalu menambahkan, dan membagi hasil pengurangan dan penambahan tersebut.
@@ -46,7 +46,7 @@ Pada script ini, kita membuat dua variabel, yaitu variabel `nir` dan `red` yang 
 **Tahap ketiga** setelah kita mendapatkan nilai NDVI, kita bisa langsung memvisualisasi dalam bentuk peta dengan `Map.addLayer`
 ```javascript
 // Display the result
-Map.addLayer(ndvi, {min: -1, max: 1, palette:['blue', 'white', 'green']}, 'NDVI image');
+Map.addLayer(ndvi, {min: -1, max: 1, palette:['blue', 'white', 'green']}, 'Citra NDVI');
 ```
 Dari hasil ini, terlihat bahwa daerah yang lebih hijau memiliki indeks vegetasi yang lebih tinggi
 ![ndvi1](https://github.com/lindypriyanka/EBA2020/blob/master/13.png)
@@ -55,7 +55,7 @@ Dari hasil ini, terlihat bahwa daerah yang lebih hijau memiliki indeks vegetasi 
 Selain menggunakan cara manual seperti diatas, karena NDVI sangat sering dipakai dalam _remote sensing_, GEE memiliki cara singkat untuk melakukan kalkulasi ini, yaitu dengan menggunakan fungsi `ee.image` seperti dibawah ini
 
 ```javascript
-var ndvi2 = roicomposite.normalizedDifference(['B5', 'B4']).rename('NDVI');
+var ndvi2 = roicomposite.normalizedDifference(['B5', 'B4']).rename('Citra NDVI');
 ```
 
 Jika hasil ini di visualisasi, hasil yang didapatkan akan sama dengan hasil dengan metode manual
