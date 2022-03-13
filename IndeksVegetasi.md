@@ -31,7 +31,7 @@ var citra2021 = citra2021.clip(aoi);
 
 // Display the results in a cloudy place.
 Map.centerObject(aoi,12);
-Map.addLayer(citra2021 ,{bands: ['B4', 'B3', 'B2'], max: 0.3});
+Map.addLayer(citra2021 ,{bands: ['B4', 'B3', 'B2'], max: 0.3},'Natural Colour');
 ```
 
 **Tahap kedua** adalah melakukan kalkulasi sesuai dengan rumus NDVI
