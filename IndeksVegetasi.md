@@ -55,7 +55,7 @@ Dari hasil ini, terlihat bahwa daerah yang lebih hijau memiliki indeks vegetasi 
 Selain menggunakan cara manual seperti diatas, karena NDVI sangat sering dipakai dalam _remote sensing_, GEE memiliki cara singkat untuk melakukan kalkulasi ini, yaitu dengan menggunakan fungsi `ee.image` seperti dibawah ini
 
 ```javascript
-var ndvi2 = roicomposite.normalizedDifference(['B5', 'B4']).rename('Citra NDVI');
+var ndvi2 = citra2021.normalizedDifference(['B5', 'B4']).rename('Citra NDVI');
 ```
 
 Jika hasil ini di visualisasi, hasil yang didapatkan akan sama dengan hasil dengan metode manual
