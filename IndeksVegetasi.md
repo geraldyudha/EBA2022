@@ -31,7 +31,7 @@ var citra2021 = citra2021.clip(aoi);
 
 // Display the results in a cloudy place.
 Map.centerObject(aoi,12);
-Map.addLayer(citra2021);
+Map.addLayer(citra2021 ,{bands: ['B4', 'B3', 'B2'], max: 0.3});
 ```
 
 **Tahap kedua** adalah melakukan kalkulasi sesuai dengan rumus NDVI
@@ -70,10 +70,24 @@ Kita bisa melihat nilai NDVI untuk setiap pixel pada menu inspector hanya dengan
 Setelah selesai melakukan analisis NDVI, silahkan export gambar dalam format GeoTiff
 
 ```javascript
-//export map
-Export.image.toDrive({
-  image: ndvi,
-  fileNamePrefix:"ndvi",
-  region: roi,
-  scale: 30
+//Mendownload Data Citra Natural Color ke Google Drive masing-masing
+citra2021 = citra2021.select('B4', 'B3', 'B2'); //memilih band mana saja yang akan dimasukkan gambar
+Export.image.toDrive({ 
+image:citra2021, //variabel yang akan diunduh 
+description:'Natural_Color_Landsat_8', //nama file terunduh, jangan pake spasi 
+region: aoi, 
+folder: 'Praktikum EBA', //nama folder pada G-Drive 
+maxPixels:10e12, 
+scale:30, //ukuran pixel Landsat 8 30x30 m
+}); 
+ 
+//Mendownload Data NDVI ke Google Drive masing-masing
+Export.image.toDrive({ 
+image:ndvi2, //variabel yang akan diunduh
+description:'NDVI_Landsat_8', //nama file terunduh, jangan pake spasi
+region: aoi,
+folder: 'Praktikum EBA', //nama folder GDrive
+maxPixels:10e12,
+scale:30, //ukuran pixel Landsat 8 30x30 m
+});
 })
