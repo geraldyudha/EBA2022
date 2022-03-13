@@ -9,8 +9,8 @@ Rumus NDVI:
 NDVI = (NIR - RED)/(NIR + RED)
 ```
 
-**Tahap pertama** adalah memunculkan _image_ yang ingin dianalisis. Metode dan _script_ yang digunakan sama dengan pertemuan-pertemuan sebelumnya. Filter yang digunakan juga masih sama, dengan filter awan, tanggal antar Januari 2021 sampai Desember 2021, dan area of interest menggunakan shapefile batas wilayah CA dan TWA Papandayan. Silahkan jika ingin merubah tanggal untuk melihat perubahan indeks vegetasi. 
-[SHP file](https://github.com/geraldyudha/EBA2022/blob/bef8af46159b07e323cc20b93051565d853c6071/CA_dan_TWA_Papandayan.zip)
+**Tahap pertama** adalah memunculkan _image_ yang ingin dianalisis. Metode dan _script_ yang digunakan sama dengan pertemuan-pertemuan sebelumnya. Filter yang digunakan juga masih sama, dengan filter awan, tanggal antar Januari 2021 sampai Desember 2021, dan area of interest menggunakan [shapefile](https://github.com/geraldyudha/EBA2022/blob/bef8af46159b07e323cc20b93051565d853c6071/CA_dan_TWA_Papandayan.zip) batas wilayah CA dan TWA Papandayan. Silahkan jika ingin merubah tanggal untuk melihat perubahan indeks vegetasi. 
+
 
 ```javascript
 // Function to mask clouds using the quality band of Landsat 8.
