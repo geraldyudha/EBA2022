@@ -77,7 +77,6 @@ image:citra2021, //variabel yang akan diunduh
 description:'Natural_Color_Landsat_8', //nama file terunduh, jangan pake spasi 
 region: aoi, 
 folder: 'Praktikum EBA', //nama folder pada G-Drive 
-maxPixels:10e12, 
 scale:30, //ukuran pixel Landsat 8 30x30 m
 }); 
  
@@ -87,7 +86,6 @@ image:ndvi2, //variabel yang akan diunduh
 description:'NDVI_Landsat_8', //nama file terunduh, jangan pake spasi
 region: aoi,
 folder: 'Praktikum EBA', //nama folder GDrive
-maxPixels:10e12,
 scale:30, //ukuran pixel Landsat 8 30x30 m
 });
-})
+```
