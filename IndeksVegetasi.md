@@ -49,7 +49,7 @@ Pada script ini, kita membuat dua variabel, yaitu variabel `nir` dan `red` yang 
 Map.addLayer(ndvi, {min: -1, max: 1, palette:['blue', 'white', 'green']}, 'Citra NDVI');
 ```
 Dari hasil ini, terlihat bahwa daerah yang lebih hijau memiliki indeks vegetasi yang lebih tinggi
-![ndvi1](https://github.com/geraldyudha/EBA2022/blob/master/ContohNDVI1.png)
+![ndvi1](https://github.com/geraldyudha/EBA2022/blob/99c1468de60e634c74a27844f08eac5a86a715c3/ContohNDVI1.png)
 
 ### 2. Perhitungan langsung
 Selain menggunakan cara manual seperti diatas, karena NDVI sangat sering dipakai dalam _remote sensing_, GEE memiliki cara singkat untuk melakukan kalkulasi ini, yaitu dengan menggunakan fungsi `ee.image` seperti dibawah ini
@@ -59,7 +59,7 @@ var ndvi2 = citra2021.normalizedDifference(['B5', 'B4']).rename('Citra NDVI');
 ```
 
 Jika hasil ini di visualisasi, hasil yang didapatkan akan sama dengan hasil dengan metode manual
-![ndvi2](https://github.com/lindypriyanka/EBA2020/blob/master/14.png)
+![ndvi2](https://github.com/geraldyudha/EBA2022/blob/99c1468de60e634c74a27844f08eac5a86a715c3/ContohNDVI2.png)
 
 ### 3. Hasil NDVI
 Kita bisa melihat nilai NDVI untuk setiap pixel pada menu inspector hanya dengan mengklik titik pada peta, kemudian akan terliha nilai NDVI-nya. Nilai NDVI ini dapat membantu mengklasifikasi tingkat kehijauan, atau jenis penutupan lahan seperti yang dapat dilihat pada tabel dibawah ini
