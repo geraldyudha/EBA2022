@@ -1,4 +1,4 @@
-# Pertemuan 3: NDVI dan Exporting Data
+# NDVI dan Exporting Data
 ## NDVI: Normalized Difference Vegetation Index
 ### 1. Perhitungan manual
 Perhitungan NDVI dapat dilakukan secara manual dengan mengikuti rumus NDVI untuk seluruh pixel sehingga menghasilkan peta NDVI.
