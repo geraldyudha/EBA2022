@@ -9,7 +9,7 @@ Rumus NDVI:
 NDVI = (NIR - RED)/(NIR + RED)
 ```
 
-**Tahap pertama** adalah memunculkan _image_ yang ingin dianalisis. Metode dan _script_ yang digunakan sama dengan pertemuan-pertemuan sebelumnya. Filter yang digunakan juga masih sama, dengan filter awan, tanggal antar januari 2019 sampai desember 2019, dan ROI di daerah Gunung Papandayan. Silahkan jika ingin merubah tanggal untuk melihat perubahan indeks vegetasi.
+**Tahap pertama** adalah memunculkan _image_ yang ingin dianalisis. Metode dan _script_ yang digunakan sama dengan pertemuan-pertemuan sebelumnya. Filter yang digunakan juga masih sama, dengan filter awan, tanggal antar Januari 2021 sampai Desember 2021, dan ROI di daerah Gunung Papandayan. Silahkan jika ingin merubah tanggal untuk melihat perubahan indeks vegetasi.
 
 ```javascript
 // Function to mask clouds using the quality band of Landsat 8.
@@ -23,7 +23,7 @@ var maskL8 = function(image) {
 
 // Map the function over one year of Landsat 8 TOA data and take the median.
 var composite = L8
-    .filterDate('2018-01-01', '2018-12-31')
+    .filterDate('2021-01-01', '2021-12-31')
     .map(maskL8)
     .median();
 
