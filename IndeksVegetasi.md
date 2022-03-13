@@ -9,7 +9,7 @@ Rumus NDVI:
 NDVI = (NIR - RED)/(NIR + RED)
 ```
 
-**Tahap pertama** adalah memunculkan _image_ yang ingin dianalisis. Metode dan _script_ yang digunakan sama dengan pertemuan-pertemuan sebelumnya. Filter yang digunakan juga masih sama, dengan filter awan, tanggal antar Januari 2021 sampai Desember 2021, dan ROI di daerah Gunung Papandayan. Silahkan jika ingin merubah tanggal untuk melihat perubahan indeks vegetasi.
+**Tahap pertama** adalah memunculkan _image_ yang ingin dianalisis. Metode dan _script_ yang digunakan sama dengan pertemuan-pertemuan sebelumnya. Filter yang digunakan juga masih sama, dengan filter awan, tanggal antar Januari 2021 sampai Desember 2021, dan ROI menggunakan shapefile batas wilayah CA dan TWA Papandayan. Silahkan jika ingin merubah tanggal untuk melihat perubahan indeks vegetasi.
 
 ```javascript
 // Function to mask clouds using the quality band of Landsat 8.
@@ -30,7 +30,7 @@ var composite = L8
 var roicomposite = composite.clip(roi);
 
 // Display the results in a cloudy place.
-Map.setCenter(107.722, -7.3181);
+Map.centerObject(roi,12);
 Map.addLayer(roicomposite);
 ```
 
@@ -67,7 +67,7 @@ Kita bisa melihat nilai NDVI untuk setiap pixel pada menu inspector hanya dengan
 ![tabel](https://github.com/lindypriyanka/EBA2020/blob/master/15.png)
 
 ### 4. Export hasil
-Setelah selesai melakukan analisis NDVI, silahkan export gambar dalam format GeoTiff seperti minggu kemarin
+Setelah selesai melakukan analisis NDVI, silahkan export gambar dalam format GeoTiff
 
 ```javascript
 //export map
