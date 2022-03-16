@@ -106,13 +106,11 @@ var sentinel = (ee.ImageCollection("COPERNICUS/S2_SR"))
 .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 5))
 //ini adalah fungsi yang kita buat di atas untuk mereduksi awan
 .map(maskS2clouds)
-
 //metode yang digunakan dalam mozaik, dengan nilai median pada setiap pixel,
 //bisa juga dengan mean, min, max, dll
 .median()
 //untuk memotong citra agar data yang ditampilkan hanya sebesar wilayah yang kita inginkan
 .clip(aoi);
-
 //fungsi untuk menghapus awan
 function maskS2clouds(image) {
 var qa = image.select('QA60');
@@ -132,7 +130,7 @@ var imageparameter = { min: 0, max: 3000};
 //Jika max semakin kecil, brightness semakin tinggi (terang-putih)
 //Jika max semakin besar, brightness semakin rendah (gelap-hitam)
 
-//Menambah layer Peta bernama ITB Nangor_Sentinel 2A
+//Menambah layer Peta bernama Papandayan Sentinel 2A
 Map.addLayer(Citra2021Sentinel, imageparameter, 'Papandayan Sentinel 2A');
 
 //Pengambilan Band untuk menghitung NDVI
@@ -147,7 +145,7 @@ var NDVIparam = {min: -1, max: 1, palette:['blue', 'white', 'green']};
 Map.centerObject(aoi,12.5); //peta akan ditampilkan berdasarkan wilayah AOI dengan zoom 12.5
 //rentang nilai zoom 1-20, semakin besar semakin dekat
 
-//Menambahkan layer peta NDVI Nangor 2021
+//Menambahkan layer peta NDVI Papandayan 2021
 Map.addLayer(ndvi, NDVIparam, 'NDVI Papandayan 2021');
 ```
 **Perbandingan visualisasi ndvi dengan citra landsat (kiri) dan sentinel (kanan)**
