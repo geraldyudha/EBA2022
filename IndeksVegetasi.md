@@ -91,7 +91,7 @@ scale:30, //ukuran pixel Landsat 8 30x30 m
 });
 ```
 
-##(Bisa dicoba secara mandiri)
+## (Bisa dicoba secara mandiri)
 ### 5. NDVI menggunakan citra Sentinel-2
 Perbedaan utama dalam processing image pada sentinel-2 dibandingkan dengan landsat 8 adalah function yang berbeda untuk cloud masking dan nomor band yang digunakan karena memiliki urutan band berbeda untuk red dan near-infrared. Keuntungan menggunakan dataset sentinel 2 adalah resolusi spasial yang lebih tinggi yaitu 10x10m dibandingkan landsat 8  30x30m.
 
