@@ -90,3 +90,62 @@ folder: 'Praktikum EBA', //nama folder GDrive
 scale:30, //ukuran pixel Landsat 8 30x30 m
 });
 ```
+
+### 5. NDVI menggunakan citra Sentinel-2
+Perbedaan utama dalam processing image pada sentinel-2 dibandingkan dengan landsat 8 adalah function yang berbeda untuk cloud masking dan nomor band yang digunakan karena memiliki urutan band berbeda untuk red dan near-infrared. Keuntungan menggunakan dataset sentinel 2 adalah resolusi spasial yang lebih tinggi yaitu 10x10m dibandingkan landsat 8  30x30m.
+
+```javascript
+//memanggil dataset Sentinel-2A
+var sentinel = (ee.ImageCollection("COPERNICUS/S2_SR"))
+//menentukan range data citra yang akan diambil
+.filterDate('2021-01-01', '2021-12-01')
+
+//Fungsi untuk menyeleksi tutupan awan pada citra
+//5 berarti persentase awan, jadi hanya akan dipilih citra yg memiliki tutupan awan <5%
+.filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 5))
+//ini adalah fungsi yang kita buat di atas untuk mereduksi awan
+.map(maskS2clouds)
+
+//metode yang digunakan dalam mozaik, dengan nilai median pada setiap pixel,
+//bisa juga dengan mean, min, max, dll
+.median()
+//untuk memotong citra agar data yang ditampilkan hanya sebesar wilayah yang kita inginkan
+.clip(aoi);
+
+//fungsi untuk menghapus awan
+function maskS2clouds(image) {
+var qa = image.select('QA60');
+// Bits 10 and 11 are clouds and cirrus, respectively.
+var cloudBitMask = 1 << 10;
+var cirrusBitMask = 1 << 11;
+// Both flags should be set to zero, indicating clear conditions.
+var mask = qa.bitwiseAnd(cloudBitMask).eq(0)
+.and(qa.bitwiseAnd(cirrusBitMask).eq(0));
+return image.updateMask(mask).divide(1);
+}
+
+//Menampilkan tampilan citra True Color atau Natural Color
+var Citra2021Sentinel = sentinel.select(['B4', 'B3', 'B2']); //kombinasi band natural color
+//Mengatur parameter visualisasi Citra Natural Color
+var imageparameter = { min: 0, max: 3000};
+//Jika max semakin kecil, brightness semakin tinggi (terang-putih)
+//Jika max semakin besar, brightness semakin rendah (gelap-hitam)
+
+//Menambah layer Peta bernama ITB Nangor_Sentinel 2A
+Map.addLayer(Citra2021Sentinel, imageparameter, 'Papandayan Sentinel 2A');
+
+//Pengambilan Band untuk menghitung NDVI
+var nir = sentinel.select('B8');
+var red = sentinel.select('B4');
+//Menghitung nilai NDVI dengan rumus
+var ndvi = (nir.subtract(red)).divide(nir.add(red)).rename('NDVIS2A');
+//Mengatur parameter visualisasi NDVI
+//palette bisa dipilih warna-warnanya tinggal diganti saja
+var NDVIparam = {min: -1, max: 1, palette:['blue', 'white', 'green']};
+//Menampilkan peta hasil visualisasi acuan center extent
+Map.centerObject(aoi,12.5); //peta akan ditampilkan berdasarkan wilayah AOI dengan zoom 12.5
+//rentang nilai zoom 1-20, semakin besar semakin dekat
+
+//Menambahkan layer peta NDVI Nangor 2021
+Map.addLayer(ndvi, NDVIparam, 'NDVI Papandayan 2021');
+```
