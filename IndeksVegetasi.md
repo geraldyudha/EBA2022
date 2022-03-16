@@ -137,7 +137,7 @@ Map.addLayer(Citra2021Sentinel, imageparameter, 'Papandayan Sentinel 2A');
 var nir = sentinel.select('B8');
 var red = sentinel.select('B4');
 //Menghitung nilai NDVI dengan rumus
-var ndvi = (nir.subtract(red)).divide(nir.add(red)).rename('NDVIS2A');
+var ndvisentinel = (nir.subtract(red)).divide(nir.add(red)).rename('NDVIS2A');
 //Mengatur parameter visualisasi NDVI
 //palette bisa dipilih warna-warnanya tinggal diganti saja
 var NDVIparam = {min: -1, max: 1, palette:['blue', 'white', 'green']};
@@ -146,7 +146,7 @@ var NDVIparam = {min: -1, max: 1, palette:['blue', 'white', 'green']};
 Map.centerObject(aoi,12.5); //peta akan ditampilkan berdasarkan wilayah AOI dengan zoom 12.5
 //rentang nilai zoom 1-20, semakin besar semakin dekat
 //Menambahkan layer peta NDVI Papandayan 2021
-Map.addLayer(ndvi, NDVIparam, 'NDVI Papandayan 2021');
+Map.addLayer(ndvisentinel, NDVIparam, 'NDVI Papandayan 2021');
 ```
 **Perbandingan visualisasi ndvi dengan citra landsat (kiri) dan sentinel (kanan)**
 ![Landsat vs Sentinel](https://github.com/geraldyudha/EBA2022/blob/4ff482f49dfd7f12d61a3db93867fc8fe83adc38/ndvilandsatvssentinel.png)
