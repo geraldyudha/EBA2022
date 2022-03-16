@@ -149,3 +149,5 @@ Map.centerObject(aoi,12.5); //peta akan ditampilkan berdasarkan wilayah AOI deng
 //Menambahkan layer peta NDVI Nangor 2021
 Map.addLayer(ndvi, NDVIparam, 'NDVI Papandayan 2021');
 ```
+**Perbandingan visualisasi ndvi dengan citra landsat (kiri) dan sentinel (kanan)
+![Landsat vs Sentinel](https://github.com/geraldyudha/EBA2022/blob/4ff482f49dfd7f12d61a3db93867fc8fe83adc38/ndvilandsatvssentinel.png)
