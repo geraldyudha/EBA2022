@@ -141,10 +141,10 @@ var ndvi = (nir.subtract(red)).divide(nir.add(red)).rename('NDVIS2A');
 //Mengatur parameter visualisasi NDVI
 //palette bisa dipilih warna-warnanya tinggal diganti saja
 var NDVIparam = {min: -1, max: 1, palette:['blue', 'white', 'green']};
+
 //Menampilkan peta hasil visualisasi acuan center extent
 Map.centerObject(aoi,12.5); //peta akan ditampilkan berdasarkan wilayah AOI dengan zoom 12.5
 //rentang nilai zoom 1-20, semakin besar semakin dekat
-
 //Menambahkan layer peta NDVI Papandayan 2021
 Map.addLayer(ndvi, NDVIparam, 'NDVI Papandayan 2021');
 ```
