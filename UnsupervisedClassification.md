@@ -92,7 +92,7 @@ Map.addLayer(hasilklasifikasi.clip(bufferOut).randomVisualizer(),{} , 'hasil kla
 
 ### 5. Reklasifikasi Peta
 Klasifikasi tutupan lahan yang dihasilkan bisa saja menghasilkan dua atau lebih kelas yang sebenarnya memiliki tutupan lahan yang sama namun dicluster dalam kelompok berbeda oleh algoritma yang kita gunakan (ex. hutan masuk ke cluster 2 dan 4). Maka itu perlu dilakukan reklasifikasi untuk mendapat hasil klasifikasi yang lebih baik. 
-
+Ini kelas tutupan lahan yang akan kita gunakan ![kelas](https://github.com/lindypriyanka/EBA2020/blob/1caf000f9e3f2578dc5cfc25481ad63f155aa123/6.png)
 ```javascript
 //Menentukan cluster tiap kelas
 //fromCrater = 9 // ini nilai originalnya
