@@ -10,7 +10,7 @@ Untuk memudahkan, aoi (feature table) diubah menjadi geometri. Dibuat juga area 
 var region = aoi.geometry();
 
 // membuat buffer pada aoi
-var bufferOut = region.buffer(1000)
+var bufferOut = region.buffer(1000) /jarak buffer dalam meter, bisa diatur sesuai konteks
 var bufferIn = region.buffer(-500)
 
 Map.addLayer(bufferOut, {color: 'red'}, 'Buffer out');
