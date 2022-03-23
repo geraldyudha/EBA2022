@@ -96,7 +96,7 @@ Klasifikasi tutupan lahan yang dihasilkan bisa saja menghasilkan dua atau lebih 
 ```javascript
 //Menentukan cluster tiap kelas
 //fromCrater = 9 // ini nilai originalnya
-//toCrater = [5]; // ini nilai yang akan kita berikan
+//toCrater = [5]; // ini nilai yang akan kita berikan (bebas)
   
 //fromForest = [1,4,0,5,8];
 //toForest = [1,1,1,1,1];
