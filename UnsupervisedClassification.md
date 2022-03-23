@@ -193,6 +193,7 @@ scale:10,
 ```
 
 ### 8. Menghitung luas tiap kelas
+Luas area dapat dihitung dari hasil reklasifikasi, dapat diatur region yang akan dihitung luas areanya, kali ini kita akan mempelajari luas tutupan lahan pada `edgearea`
 ```javascript
 //CALCULATE AREA FOR EACH CLASS
 
@@ -215,7 +216,7 @@ print(reklasifikasi)
 var areaChart = ui.Chart.image.byClass({
   image: ee.Image.pixelArea().addBands(reklasifikasi),
   classBand: 'remapped', 
-  region: bufferOut,
+  region: edgearea,
   reducer: ee.Reducer.sum(),
   scale: 20,
 }).setOptions(options);
