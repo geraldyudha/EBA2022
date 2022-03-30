@@ -120,7 +120,7 @@ Langkah terakhir adalah melakukan klasifikasi kepada gambar yang telah kita pili
 //Run the classification
 var classified = sentinel.select(bands).classify(classifier);
 Map.addLayer(classified,
-{min: 0, max: 6, palette:['#28c310','#ecaf4a','#4ad9ff','#1043c2','#1043c2','#ff5319','#2bff8e','#fcffae']},
+{min: 0, max: 6, palette:['#28c310','#ecaf4a','#4ad9ff','#1043c2','#ff5319','#2bff8e','#fcffae']},
 'classification');
 ```
 
