@@ -74,7 +74,7 @@ Kita perlu membuat satu layer geometry untuk setiap kelas dan memberi nama geome
 
 ![feature](https://github.com/geraldyudha/EBA2022/blob/89eaf8658ce8108eff6508d7cd873d1023cc4941/1.png)
 
-Training sample setiap kelas dipilih dengan membuat polygon, rectangle, atau juga bisa point pada daerah yang merepresentasikan kelas tersebut. Semakin banyak geometry yang dibuat akan semakin baik hasil yang didapatkan. Point yang diberikan sebisa mungkin harus beragam dan representatif terhadap kelas tersebut.
+Training sample setiap kelas dipilih dengan membuat polygon, rectangle, atau juga bisa point pada daerah yang merepresentasikan kelas tersebut. Semakin banyak geometry yang dibuat akan semakin baik hasil yang didapatkan. Geometry yang dibuat sebisa mungkin harus beragam dan representatif terhadap kelas tersebut.
 
 ![trainingsample](https://github.com/geraldyudha/EBA2022/blob/89eaf8658ce8108eff6508d7cd873d1023cc4941/2.png)
 
