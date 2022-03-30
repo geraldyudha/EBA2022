@@ -214,3 +214,18 @@ var areaChart = ui.Chart.image.byClass({
 }).setOptions(options);
 print(areaChart);
 ```
+atau bisa juga di print pada console dengan:
+
+```javascript
+var class_areas = ee.Image.pixelArea().addBands(classified)
+  .reduceRegion({
+    reducer: ee.Reducer.sum().group({
+      groupField: 1,
+      groupName: 'code',
+    }),
+    geometry: edgearea,
+    scale: 10,
+  }).get('groups');
+  
+print(class_areas);
+```
